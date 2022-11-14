@@ -1,0 +1,18 @@
+#
+#
+GET http://localhost:8080/api/config/1
+#
+#
+
+POST http://localhost:8080/api/config
+Content-Type: application/json
+{
+    "description" : "POLLITOS",
+}
+#
+#
+PUT http://localhost:8080/api/config/1
+Content-Type: application/json
+{
+    "description" : "POR DEFECTO",
+}

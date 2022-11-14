@@ -38,11 +38,13 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->group('api', ['namespace' => 'App\Controllers\API'], static function ($routes) {
     $routes->resource('config');
+    $routes->resource('detail');
 });
 
 $routes->group('web', ['namespace' => 'App\Controllers\WEB'], static function ($routes) {
     $routes->get('home', 'Home::index');
     $routes->get('home/delete/(:num)', 'Home::delete/$1');
+    $routes->post('home/create/(:num)', 'Home::create/$1');
 });
 
 /*

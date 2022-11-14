@@ -6,6 +6,8 @@ use CodeIgniter\RESTful\ResourceController;
 
 class Detail extends ResourceController
 {
+    protected $modelName = 'App\Models\API\Detail';
+
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -13,7 +15,9 @@ class Detail extends ResourceController
      */
     public function index()
     {
-        //
+        $data = $this->model->findAll();
+        return $this->respond(['data' => $data]);
+
     }
 
     /**

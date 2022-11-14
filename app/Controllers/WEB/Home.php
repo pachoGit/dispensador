@@ -21,13 +21,25 @@ class Home extends BaseController
                  ->where('id_config', 1)
                  ->orderBy('time', 'ASC')
                  ->findAll();
-        //echo var_dump($results);
-        return view('dashboard', ['results' => $results]);
+        $percentage = $this->config->first();
+        return view('dashboard', ['results' => $results, 'percentage' => $percentage]);
     }
 
     public function delete($id = null)
     {
         $this->detail->delete($id);
+        return redirect()->to('web/home');
+    }
+
+    public function create($idType = null)
+    {
+        $data = [
+            'time'      => $this->request->getPost('time'),
+            'amount'    => $this->request->getPost('amount'),
+            'id_type'   => $idType,
+            'id_config' => 1
+        ];
+        $this->detail->insert($data);
         return redirect()->to('web/home');
     }
 }

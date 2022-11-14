@@ -59,6 +59,8 @@ class Config extends ResourceController
         $request = $this->request->getJSON();
         $data = [
             'description'   => $request->description,
+            'water_porc'    => $request->water_porc,
+            'grain_porc'   => $request->amount_porc
         ];
         $this->model->insert($data);
         $response = [
@@ -102,7 +104,8 @@ class Config extends ResourceController
         }
         $request = $this->request->getJSON();
         $data = [
-            'description'   => $request->description,
+            'water_porc'    => $request->water_porc,
+            'grain_porc'   => $request->amount_porc
         ];
         $this->model->update($id, $data);
         $response = [

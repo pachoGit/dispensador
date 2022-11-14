@@ -12,8 +12,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
 
-
-
 </head>
 
 <body class="bg-light">
@@ -33,13 +31,13 @@
                         <div class="col-md-6 mb-3">
                             <label for="grain">Comida</label>
                             <div class="progress mt-2">
-                                <div class="progress-bar" id="grain" role="progressbar" aria-label="Example with label" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                <div class="progress-bar" id="grain" role="progressbar" aria-label="Label grain" style="width: <?= $percentage['grain_porc'] ?>%;" aria-valuenow="<?= $percentage['grain_porc'] ?>" aria-valuemin="0" aria-valuemax="100"><?= $percentage['grain_porc'] ?>%</div>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="water">Agua</label>
                             <div class="progress mt-2">
-                                <div class="progress-bar" id="water" role="progressbar" aria-label="Example with label" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                <div class="progress-bar" id="water" role="progressbar" aria-label="Label water" style="width: <?= $percentage['water_porc'] ?>%;" aria-valuenow="<?= $percentage['water_porc'] ?>" aria-valuemin="0" aria-valuemax="100"><?= $percentage['water_porc'] ?>%</div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +46,7 @@
                         <div class="col-md-6 mb-3">
                             <?php
                             foreach ($results as $result) {
-                                if ($result['id_type'] == '1') {
+                                if ($result['id_type'] == '2') {
                             ?>
                                     <div class="row">
                                         <div class="col-md-5 mb-3">
@@ -79,7 +77,7 @@
                         <div class="col-md-6 mb-3">
                             <?php
                             foreach ($results as $result) {
-                                if ($result['id_type'] == '2') {
+                                if ($result['id_type'] == '1') {
                             ?>
                                     <div class="row">
                                         <div class="col-md-5 mb-3">
@@ -113,14 +111,93 @@
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <button class="btn btn-primary btn-lg btn-block" type="button">Agregar</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGrainModal">
+                                Agregar
+                            </button>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <button class="btn btn-primary btn-lg btn-block" type="button">Agregar</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newWaterModal">
+                                Agregar
+                            </button>
                         </div>
                     </div>
 
                 </form>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="newGrainModal" tabindex="-1" aria-labelledby="newGrainModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="newGrainModalLabel">Nuevo horario comida</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post" action="<?= base_url('web/home/create/2') ?>">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="time">Hora</label>
+                                    <input type="time" class="form-control" name="time" placeholder="" value="" required>
+                                    <div class="invalid-feedback">
+                                        El tiempo es necesario
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 mb-3">
+                                    <label for="amount">Cantidad</label>
+                                    <input type="number" class="form-control" name="amount" placeholder="" value="" min="0" required>
+                                    <div class="invalid-feedback">
+                                        La cantidad es necesario
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="newWaterModal" tabindex="-1" aria-labelledby="newWaterModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="newWaterModalLabel">Nuevo horario agua</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post" action="<?= base_url('web/home/create/1') ?>">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="time">Hora</label>
+                                    <input type="time" class="form-control" name="time" placeholder="" value="" required>
+                                    <div class="invalid-feedback">
+                                        El tiempo es necesario
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 mb-3">
+                                    <label for="amount">Cantidad</label>
+                                    <input type="number" class="form-control" name="amount" placeholder="" value="" min="0" required>
+                                    <div class="invalid-feedback">
+                                        La cantidad es necesario
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 

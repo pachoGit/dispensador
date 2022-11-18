@@ -42,4 +42,10 @@ class Home extends BaseController
         $this->detail->insert($data);
         return redirect()->to('web/home');
     }
+
+    public function apiIndex()
+    {
+        $data = $this->config->findAll();
+        return view('api_index', ['data' => $data[0]]);
+    }
 }

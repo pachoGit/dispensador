@@ -3,11 +3,14 @@
 GET http://localhost:8080/api/config/1
 #
 #
+GET http://localhost:8080/web/home/api
+#
+#
 
 POST http://localhost:8080/api/config
 Content-Type: application/json
 {
-    "water_porc": 70,
+    "water_porc": 90,
     "amount_porc": 20
 }
 #
@@ -15,9 +18,43 @@ Content-Type: application/json
 PUT http://localhost:8080/api/config/1
 Content-Type: application/json
 {
-    "water_porc": 70,
+    "water_porc": 90,
     "amount_porc": 20
 }
 #
 #
 GET http://localhost:8080/api/detail/
+#
+#
+#
+# En el servidor
+GET http://app.solucionesahora.com/dispensador/public/api/config/1
+#
+#
+POST http://app.solucionesahora.com/dispensador/public/api/config
+Content-Type: application/json
+{
+    "water_porc": 50,
+    "amount_porc": 20
+}
+#
+# En el servidor
+PUT http://app.solucionesahora.com/dispensador/public/api/config/1
+Content-Type: application/json
+{
+    "water_porc": 90,
+    "amount_porc": 20
+}
+#
+#
+GET http://app.solucionesahora.com/dispensador/public/api/detail
+#
+#
+GET http://arduino.tips/asciilogo.txt
+#
+#
+#
+GET http://app.solucionesahora.com/dispensador/public/web/home
+#
+#
+GET http://app.solucionesahora.com/dispensador/public/web/home/api

@@ -8,6 +8,8 @@ class Config extends ResourceController
 {
     protected $modelName = 'App\Models\API\Config';
 
+    //protected $format = 'urlencoded';
+
     /**
      * Return an array of resource objects, themselves in array format
      *

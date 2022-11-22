@@ -30,7 +30,9 @@ class Config extends ResourceController
     {
         $data = $this->model->where('id_config', $id)->first();
         if ($data)
-            return $this->respond(['data' => $data]);
+            return $this->respondCreated(['data' => $data], "hola Amigos");
+            //return $this->respond(['data' => $data]);
+
         $response = [
             'status' => 404,
             'error'  => true,

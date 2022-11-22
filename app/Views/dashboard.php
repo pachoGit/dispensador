@@ -19,8 +19,8 @@
     <div class="container">
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-            <h2>DISPENSADOR NOMBRE</h2>
-            <p class="lead">Panel del control del dispensador automático</p>
+            <h2>DISPENSADOR EL TIGRILLO</h2>
+            <p class="lead">Panel del control del dispensador el Tigrillo, ¡Tus gallinas en nuestras manos¡</p>
         </div>
 
         <div class="row justify-text-center">
@@ -65,10 +65,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2 mb-3">
+                                        <!-- <div class="col-md-2 mb-3">
                                             <label for=""></label>
                                             <a href="<?= base_url('web/home/delete/' . $result['id_detail']) ?>" class="btn btn-danger mt-4" id="" placeholder="" readonly> - </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                             <?php }
                             }  ?>
@@ -96,10 +96,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2 mb-3">
+                                        <!-- <div class="col-md-2 mb-3">
                                             <label for=""></label>
                                             <a href="<?= base_url('web/home/delete/' . $result['id_detail']) ?>" class="btn btn-danger mt-4" id="" placeholder="" readonly> - </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                             <?php }
                             }  ?>
@@ -109,7 +109,7 @@
 
                     <hr class="mb-4">
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-6 mb-3">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGrainModal">
                                 Agregar
@@ -120,7 +120,7 @@
                                 Agregar
                             </button>
                         </div>
-                    </div>
+                    </div> -->
 
                 </form>
             </div>

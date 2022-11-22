@@ -45,7 +45,38 @@ class Home extends BaseController
 
     public function apiIndex()
     {
-        $data = $this->config->findAll();
-        return view('api_index', ['data' => $data[0]]);
+        $data = [
+            'time' => $this->request->getGet('time'),
+            'amount' => $this->request->getGet('amount'),
+            'id_type' => $this->request->getGet('type'),
+            'id_config' => 1
+        ];
+        $this->detail->insert($data);
+        return json_encode(['Estado' => 'OK', 'Mensaje' => 'Creado nueva hora']);
+    }
+
+    public function apiDelete()
+    {
+        $data = [
+            'time' => $this->request->getGet('time'),
+            'amount' => $this->request->getGet('amount'),
+            'id_type' => $this->request->getGet('type'),
+            'id_config' => 1
+        ];
+        $register = $this->detail
+                  ->where('time', $data['time'])
+                  ->where('id_type', $data['id_type'])->first();
+        $this->detail->delete($register['id_detail']);
+        return json_encode(['Estado' => 'OK', 'Mensaje' => 'Borrado hora']);
+    }
+
+    public function apiMount()
+    {
+        $data = [
+            'water_porc' => $this->request->getGet('water_porc'),
+            'grain_porc' => $this->request->getGet('grain_porc')
+        ];
+        $this->config->update(1, $data);
+        return json_encode(['Estado' => 'OK', 'Mensaje' => 'Guardado nueva cantidad']);
     }
 }

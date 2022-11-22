@@ -46,6 +46,8 @@ $routes->group('web', ['namespace' => 'App\Controllers\WEB'], static function ($
     $routes->get('home/delete/(:num)', 'Home::delete/$1');
     $routes->post('home/create/(:num)', 'Home::create/$1');
     $routes->get('home/api', 'Home::apiIndex');
+    $routes->get('home/apiDelete', 'Home::apiDelete');
+    $routes->get('home/apiMount', 'Home::apiMount');
 });
 
 /*

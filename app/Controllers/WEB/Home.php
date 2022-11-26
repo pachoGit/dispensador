@@ -45,14 +45,18 @@ class Home extends BaseController
 
     public function apiIndex()
     {
-        $data = [
-            'time' => $this->request->getGet('time'),
-            'amount' => $this->request->getGet('amount'),
-            'id_type' => $this->request->getGet('type'),
-            'id_config' => 1
-        ];
-        $this->detail->insert($data);
-        return json_encode(['Estado' => 'OK', 'Mensaje' => 'Creado nueva hora']);
+        $results = $this->detail
+                 ->where('id_config', 1)
+                 ->orderBy('time', 'ASC')
+                 ->findAll();
+        //return var_dump($results);
+        $response = '';
+        foreach ($results as $result)
+        {
+            $response .= $result['time'] . ','. $result['amount'] . ',' . $result['id_type'];
+            $response .= '-';
+        }
+        return $response;
     }
 
     public function apiDelete()

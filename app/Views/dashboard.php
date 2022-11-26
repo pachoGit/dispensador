@@ -65,10 +65,11 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="col-md-2 mb-3">
+                                        <div class="col-md-2 mb-3">
                                             <label for=""></label>
                                             <a href="<?= base_url('web/home/delete/' . $result['id_detail']) ?>" class="btn btn-danger mt-4" id="" placeholder="" readonly> - </a>
-                                        </div> -->
+                                        </div>
+
                                     </div>
                             <?php }
                             }  ?>
@@ -109,18 +110,18 @@
 
                     <hr class="mb-4">
 
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newGrainModal">
                                 Agregar
                             </button>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <!-- <div class="col-md-6 mb-3">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newWaterModal">
                                 Agregar
                             </button>
-                        </div>
-                    </div> -->
+                        </div> -->
+                    </div>
 
                 </form>
             </div>

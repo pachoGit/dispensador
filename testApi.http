@@ -3,7 +3,7 @@
 GET http://localhost:8080/api/config/1
 #
 #
-GET http://localhost:8080/web/home/api?time=14:30&amount=456&type=1
+GET http://localhost:8080/web/home/api
 #
 #
 GET http://localhost:8080/web/home/apiDelete?time=14:30&amount=456&type=1
@@ -13,9 +13,9 @@ GET http://localhost:8080/web/home/apiMount?water_porc=10&grain_porc=25
 #
 #
 #
-GET http://app.solucionesahora.com/dispensador/public/web/home/api?time=14:30&amount=456&type=1
+GET http://app.solucionesahora.com/dispensador/public/web/home/api
 #
 GET http://app.solucionesahora.com/dispensador/public/web/home/apiDelete?time=14:30&amount=456&type=1
 #
 #
-GET http://app.solucionesahora.com/dispensador/public/web/home/apiMount?water_porc=50&grain_porc=30
+GET http://app.solucionesahora.com/dispensador/public/web/home/apiMount?water_porc=60&grain_porc=40

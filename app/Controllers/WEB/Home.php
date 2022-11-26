@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 
 use App\Models\API\Config;
 use App\Models\API\Detail;
+use App\Models\API\Logemail;
 
 class Home extends BaseController
 {
@@ -13,6 +14,8 @@ class Home extends BaseController
     {
         $this->config = new Config;
         $this->detail = new Detail;
+        $this->logemail = new Logemail;
+        $this->email = \Config\Services::email();
     }
 
     public function index()
@@ -81,6 +84,41 @@ class Home extends BaseController
             'grain_porc' => $this->request->getGet('grain_porc')
         ];
         $this->config->update(1, $data);
+
+        if (intval($data['water_porc']) <= 10 || intval($data['grain_porc']) <= 10)
+        {
+            $result = $this->logemail->orderBy('created_at', 'DESC')->first();
+            //return json_encode($result);
+            $last = new \DateTime($result['created_at']);
+            $datetime = new \DateTime('now', new \DateTimeZone('America/Lima'));
+
+            $interval = $datetime->diff($last);
+            $time = intval($interval->format('%i'));
+            if ($time > 60)
+            {
+                $this->sendMail($data['grain_porc'], $data['water_porc']);
+                $this->logemail->insert(['description' => 'Log Email']);
+            }
+        }
         return json_encode(['Estado' => 'OK', 'Mensaje' => 'Guardado nueva cantidad']);
+    }
+
+    public function sendMail($grain, $water)
+    {
+        $message = 'Los recursos se estan agotando: \n';
+        $message .= 'Porcentaje del agua: ' . $water . '\n';
+        $message .= 'Porcentaje del maiz: ' . $grain;
+
+        $this->email->setTo('hcpazv@alumno.unsm.edu.pe');
+        $this->email->setFrom('8bcdd928366aa9', 'Contacto Dispensador el TIGRILLO');
+        $this->email->setSubject('ESTADO DEL DISPENSADOR');
+        $this->email->setMessage($message);
+        if ($this->email->send())
+            $data = ['msg' => 'Correo enviado correctamente'];
+        else
+            $data = ['msg' => 'Correo no enviado '. $this->email->printDebugger(['headers'])];
+
+        return json_encode($data);
+
     }
 }

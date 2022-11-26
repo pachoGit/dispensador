@@ -47,9 +47,9 @@ public:
             analogWrite(enableA, 255);
             digitalWrite(in1, HIGH);
             digitalWrite(in2, LOW);
-            Serial.println("Dispensando agua...");
+            //Serial.println("Dispensando agua...");
             delay(timeDispend); // 100ml
-            Serial.println("Termino dispensar el agua");
+            //Serial.println("Termino dispensar el agua");
             digitalWrite(in1, LOW);
             digitalWrite(in2, LOW);
             delay(2000);

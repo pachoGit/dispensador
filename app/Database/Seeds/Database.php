@@ -10,5 +10,6 @@ class Database extends Seeder
     {
         $this->call('App\Database\Seeds\API\Config');
         $this->call('App\Database\Seeds\API\Type');
+        $this->call('App\Database\Seeds\API\Logemail');
     }
 }

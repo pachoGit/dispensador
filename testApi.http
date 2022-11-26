@@ -13,6 +13,9 @@ GET http://localhost:8080/web/home/apiMount?water_porc=10&grain_porc=25
 #
 #
 #
+GET http://localhost:8080/web/home/sendMail
+#
+#
 GET http://app.solucionesahora.com/dispensador/public/web/home/api
 #
 GET http://app.solucionesahora.com/dispensador/public/web/home/apiDelete?time=14:30&amount=456&type=1

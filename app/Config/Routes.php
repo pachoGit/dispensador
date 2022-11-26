@@ -48,6 +48,7 @@ $routes->group('web', ['namespace' => 'App\Controllers\WEB'], static function ($
     $routes->get('home/api', 'Home::apiIndex');
     $routes->get('home/apiDelete', 'Home::apiDelete');
     $routes->get('home/apiMount', 'Home::apiMount');
+    $routes->get('home/sendMail', 'Home::sendMail');
 });
 
 /*

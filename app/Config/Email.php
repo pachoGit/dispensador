@@ -33,7 +33,8 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $protocol = 'mail';
+    //public $protocol = 'mail';
+    public $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -47,21 +48,21 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost;
+    public $SMTPHost = 'smtp.mailtrap.io';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser;
+    public $SMTPUser = '8bcdd928366aa9';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass;
+    public $SMTPPass = 'aba40668160775';
 
     /**
      * SMTP Port
@@ -69,6 +70,7 @@ class Email extends BaseConfig
      * @var int
      */
     public $SMTPPort = 25;
+    //public $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -89,7 +91,8 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPCrypto = 'tls';
+    //public $SMTPCrypto = 'tls';
+    public $SMTPCrypto;
 
     /**
      * Enable word-wrap

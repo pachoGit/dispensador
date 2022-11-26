@@ -46,7 +46,7 @@ def sendDataToServer(dataArduino):
     water_porc = int(100.0 - (distanceWater * 100.0) / distanceWaterEmpty);
 
     route = route +  'water_porc=' + str(water_porc) + '&'
-    route = route +  'grain_proc=' + str(grain_porc)
+    route = route +  'grain_porc=' + str(grain_porc)
 
     print('SEND DATA TO SERVER: ', route)
     http.get(route)

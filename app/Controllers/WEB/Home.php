@@ -88,17 +88,18 @@ class Home extends BaseController
         if (intval($data['water_porc']) <= 10 || intval($data['grain_porc']) <= 10)
         {
             $result = $this->logemail->orderBy('created_at', 'DESC')->first();
-            //return json_encode($result);
+
             $last = new \DateTime($result['created_at']);
             $datetime = new \DateTime('now', new \DateTimeZone('America/Lima'));
+            $interval = $last->diff($datetime);
+            $time = intval($interval->format('%H'));
 
-            $interval = $datetime->diff($last);
-            $time = intval($interval->format('%i'));
-            if ($time > 60)
+            if ($time > 1)
             {
-                $this->sendMail($data['grain_porc'], $data['water_porc']);
+                $dataEmail = $this->sendMail($data['grain_porc'], $data['water_porc']);
                 $this->logemail->insert(['description' => 'Log Email']);
             }
+            return json_encode(['Estado' => 'OK', 'Mensaje' => 'Guardado nueva cantidad' . $dataEmail]);
         }
         return json_encode(['Estado' => 'OK', 'Mensaje' => 'Guardado nueva cantidad']);
     }
@@ -114,11 +115,9 @@ class Home extends BaseController
         $this->email->setSubject('ESTADO DEL DISPENSADOR');
         $this->email->setMessage($message);
         if ($this->email->send())
-            $data = ['msg' => 'Correo enviado correctamente'];
+            return 'Correo enviado correctamente';
         else
-            $data = ['msg' => 'Correo no enviado '. $this->email->printDebugger(['headers'])];
-
-        return json_encode($data);
+            return 'Correo no enviado' . $this->email->printDebugger(['headers']);
 
     }
 }
